@@ -2,6 +2,10 @@
 ---------------------------------------------------------------------*/
 html { overflow: hidden; }
 
+body {
+  font-family: Helvetica, Arial, Sans-Serif;
+}
+
 .container-fluid {
   min-height: 100%;
   width: 100%;
@@ -22,7 +26,7 @@ html { overflow: hidden; }
   width: 15%;
   min-height:100%;
   background-color: #E7E9ED;
-  border-right: 2px solid #DDD;
+  border-right: 1px solid #DDD;
   box-sizing: border-box;
   -moz-box-sizing: border-box; // for Mozilla
   -webkit-box-sizing: border-box; // for WebKit
@@ -33,7 +37,7 @@ html { overflow: hidden; }
     width: 85%;
     margin-left: 15%;
     position: absolute;
-    background: whiteSmoke;
+    background: #F4F4F4;
 }
 
 /* Shared classes
@@ -51,17 +55,34 @@ html { overflow: hidden; }
   margin-top: 0.3em;
 }
 
-#overview {
-  width: 400px;
-  margin: 10% auto;
-  padding: 10px;
-  background: #E7E9ED;
-  border: 2px solid #DDD;
+.content {
+  position: relative;
 }
 
-#overview label { width: 70px; }
-#overview .controls { margin-left: 90px; }
-#overview button { margin-left: 90px; }
+#overview {
+  width: 400px;
+  padding: 20px 20px 10px 20px;
+  margin: 25% auto;
+  background: #ffffff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,.2);
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+  position: relative;
+}
+
+#overview label { text-align: left; }
+#overview input { width: 97%; font-size: 14px; padding: 5px; }
+#overview .btn { margin-left: 90px; float: right; }
+#overview form::after {
+	content: '.';
+	visibility: hidden;
+	display: block;
+	clear: both;
+	height: 0;
+}
 
 #overview ul li {
   display: inline-block;
@@ -72,7 +93,7 @@ html { overflow: hidden; }
 }
 
 #overview ul li:hover {
-  background: #A7DBD8;
+  background: #EEE;
   cursor: pointer;
   border-radius: 5px;
 }
@@ -108,23 +129,23 @@ html { overflow: hidden; }
   background: #434950;
 }
 
-#user-box div{
+#user-box div {
   padding: 10px 25px;
-  background: #434950;
+  background: #353B48;
   color: #EEEEEE;
-  font-weight: bold;
-  border-top: 1px solid #666666;
+  border-top: 1px solid #E7E9ED;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-height: 18px;
 }
 
 #user-box div:first-child{
-  border-left: 5px solid #8A9B0F;
+  background: #7BA249 !important;
 }
 
 #user-box div:last-child{
-  border-left: 5px solid #FA6900;
+  background: #D68B2A !important;
 }
 
 #user-box div i{
@@ -134,7 +155,10 @@ html { overflow: hidden; }
 #channels > .channel {
   padding: 5% 5% 5% 20%;
   color: #333333;
-  border-bottom: 1px solid #CCCCCC;
+  border-top: 1px solid #E7E9ED;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-height: 18px;
 }
 
 #channels > .channel .close-button {
@@ -171,10 +195,9 @@ html { overflow: hidden; }
   cursor: pointer;
 }
 
-#channels > .active{
-  background: #315857;
-  color: whiteSmoke;
-  font-weight: bold;
+#channels > .active {
+  background: #538ECA;
+  color: white;
 }
 
 .channel .unread,
@@ -226,14 +249,14 @@ html { overflow: hidden; }
 #chat-bar, #user-bar{
   top: 0;
   height: 34px;
-  background: #434950;
-  color: #eee;
+  background: #353B48;
+  color: #fff;
   overflow: hidden;
 }
 
 .titlebar{
   padding-top: 0.5em;
-  font-size: 1.2em;
+  font-size: 1.1em;
   padding-left: 0.5em;
 }
 
@@ -257,13 +280,17 @@ html { overflow: hidden; }
   border-right: 1px solid #DDDDDD
 }
 
+#chat-contents .message-box:last-child {
+  border-bottom: none;
+}
+
 #input-container {
   height: 55px;
   position: absolute;
   bottom: 0;
-  border-top: 2px solid #DDD;
-  background: whiteSmoke;
+  background: white;
   border-right: 1px solid #DDDDDD;
+  box-shadow: 0 -1px 2px rgba(0,0,0,0.13);
 }
 
 #input-container .input{
@@ -324,6 +351,8 @@ html { overflow: hidden; }
   max-width: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 12px;
+  text-align: right;
 }
 
 .chat-message {
@@ -331,8 +360,6 @@ html { overflow: hidden; }
   width: 66%;
   max-width: 200px;
   padding: 1%;
-  border-left: 1px solid #DDDDDD;
-  border-right: 1px solid #DDDDDD;
 }
 
 .chat-message span{
@@ -341,6 +368,8 @@ html { overflow: hidden; }
 
 .chat-message.motd {
   white-space: pre;
+  font-size: 12px;
+  font-family: Monaco, Courier New, Monospace;
 }
 
 .chat-message .embed img{
@@ -369,6 +398,7 @@ html { overflow: hidden; }
   text-align: center;
   padding: 1% 0% 1% 0%;
   width: 20%;
+  font-size: 11px;
 }
 
 #user-window {
@@ -427,6 +457,7 @@ html { overflow: hidden; }
   max-width: 100px;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-height: 18px;
 }
 
 .userlist_user_time{
